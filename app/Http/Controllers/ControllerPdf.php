@@ -16,6 +16,8 @@ class ControllerPdf extends BaseController
 
     public function descargarPdf(){
         $pdf = new Pdf();
+        $pdf->setHtml("<!DOCTYPE html><html lang=\"es\"><head><title>Prueba</title></head><body>Hola Mundo!</body></html>");
+        $pdf->setPdfName('prueba.pdf');
         $pdf->generarPdf();
         $pdf->descargaPdf();
     }
