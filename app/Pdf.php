@@ -5,20 +5,56 @@ use Dompdf\Dompdf;
 
 class Pdf{
 
+    protected $dompdf;
+    protected $pdfName;
+    protected $html;
+
+    public function __construct(){
+        $this->dompdf = new Dompdf();
+        $this->pdfName = "";
+        $this->html = "";
+    }
+
     public function generarPdf(){
 
-        // echo 'hello world';
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml('hello world');
+        $this->dompdf->loadHtml($this->html);
         
         // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
+        $this->dompdf->setPaper('A4');
         
         // Render the HTML as PDF
-        $dompdf->render();
-        $file = $dompdf->output();
+        $this->dompdf->render();
         
-        // Output the generated PDF to Browser
-        $dompdf->stream($file, array("Attachment" => 0));
     }
+    
+    public function descargaPdf(){
+        if ($this->pdfName != "")
+            $this->dompdf->stream($this->pdfName);        
+        else
+            echo 'No existe el pdf';
     }
+    
+    public function verPdf(){
+        $this->dompdf->stream("MiDocumento.pdf", array("Attachment" => 0));
+    }
+
+    public function setHtml($string){
+        $this->html = $string;
+    }
+
+    public function getHtml(){
+        return $this->html;
+    }
+
+    public function setPdfName($name){
+        $this->pdfName = $name;
+    }
+
+    public function getPdfName(){
+        return $this->pdfName;
+    }
+
+    public function getDompdf(){
+        return $this->dompdf;
+    }
+}

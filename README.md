@@ -1,6 +1,6 @@
 # PrintCloud
 
-Proyecto para la asignatura Infraestructura Virtual. Curso 2019-20.
+[![Build Status](https://travis-ci.com/Neo-Stark/Proyecto-IV-19-20.svg?branch=master)](https://travis-ci.com/Neo-Stark/Proyecto-IV-19-20)
 
 ## Overview
 
@@ -23,3 +23,5 @@ El proyecto está basado en un apartado en específico de una aplicación web ex
 ## Motivación
 
 La principal motivación es crear un servicio que sea capaz de formatear y exportar a pdf cualquier conjunto de datos de forma rápida para su posterior distribución. Esta función es transparente e inmediata para el cliente ahorrando el uso de librerias más complejas.
+
+> Proyecto para la asignatura Infraestructura Virtual. Curso 2019-20.
