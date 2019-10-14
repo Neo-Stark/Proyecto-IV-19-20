@@ -1,0 +1,11 @@
+version: 2 # use CircleCI 2.0
+
+jobs: # a collection of steps
+  build: # runs not using Workflows must have a `build` job as entry point
+    docker: # run the steps with Docker 
+      - image: circleci/php # ...with this image as the primary container; this is where all `steps` will run
+    steps:
+      - checkout
+      - run: sudo composer self-update
+      - run: composer install
+      - run: ./vendor/bin/phpunit
