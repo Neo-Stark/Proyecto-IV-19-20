@@ -25,25 +25,38 @@ class ControllerPdf extends BaseController
     }
 
     public function descargar($id){
-        $model = Pdf::find($id);
-        $this->pdf->setDatos($model->datos);
-        $this->pdf->setPdfName($model->name.".pdf");
+        // $model = Pdf::find($id);
+        // $this->pdf->setDatos($model->datos);
+        $this->pdf->setDatos('[
+            {
+                "nombre": "fran",
+                "universidad": "UGR"
+            },
+            {
+                "nombre": "ivan",
+                "universidad": "UCA"
+            }
+        ]');
+        // $this->pdf->setPdfName($model->name.".pdf");
+        $this->pdf->setPdfName("prueba.pdf");
         $this->pdf->generarHtml();
         $this->pdf->generar();
-        $this->pdf->descargar();
+        // $this->pdf->descargar();
     }
 
     public function createPdf(Request $request){
-        $pdf = new Pdf();
-        $pdf->nombre = $request->input('nombre');
+        // $pdf = new Pdf();
+        // $pdf->nombre = $request->input('nombre');
         // if (is_array($request->input('datos'))):
-            $pdf->datos = json_encode($request->input('datos'));
+        // $pdf->datos = json_encode($request->input('datos'));
         // else:
         //     $pdf->datos = json_encode(Array($request->input('datos')));
         // endif;
-        $pdf->save();
+        // $pdf->save();
         // $id = DB::table('pdf')->latest()->first();
+        $this->pdf->setDatos(json_encode($request->input('datos')));
+        $this->pdf->setPdfName($request->input('nombre'));
 
-        return response()->json(['created'=>true]);
+        return response()->json(['created'=>true, 'id'=> 1]);
     }
 }
