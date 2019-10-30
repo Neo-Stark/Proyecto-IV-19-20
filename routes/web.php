@@ -14,6 +14,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+$router->get('/status', function () {
+    return response()->json(['status' => 'OK']);
 
-$router->get('/pdf', 'ControllerPdf@verPdf');
-$router->get('/pdfDescarga', 'ControllerPdf@descargarPdf');
+});
+// $router->get('/pdf/{id}', 'ControllerPdf@ver');
+$router->get('/getPdf/{id}', 'ControllerPdf@descargar');
+$router->post('/createPdf', 'ControllerPdf@createPdf');
