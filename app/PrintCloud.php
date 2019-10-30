@@ -57,7 +57,6 @@ class PrintCloud{
           <tr>
           ";
           if (!is_null( $this->datos)){
-            //   echo $this->datos;
               $array = json_decode($this->datos, true);
               $columnas = array_keys($array[0]);
               foreach ($columnas as $colum){
