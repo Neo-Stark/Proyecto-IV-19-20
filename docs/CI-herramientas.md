@@ -74,10 +74,20 @@ En este caso se ha usado composer para gestionar las dependecias de toda la apli
             "tests/"
         ]
     },
-    // Creación .env
+    // Comandos de construcción
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "test": [
+            "@composer install",
+            "vendor/bin/phpunit"
+        ],
+        "start": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/",
+        "start-dev": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/ --debug=1 --app-env=dev",
+        "stop": [
+            "docker stop phppm",
+            "docker rm phppm"
         ]
     },
     // flags instalación
@@ -97,3 +107,10 @@ En las primeras líneas indicamos algunos metadatos de nuestro proyecto, lo más
 - Phing: Build tool
 
 En los siguientes apartados definimos las rutas por defecto de nuestro proyecto como el namespace de nuestra aplicación, el directorio de las clases para bbdd y el directorio de las clases para tests. Por último, se define un script para crear un fichero .env a partir de .env.example si no existe y se definen varios parámetros de instalación.
+
+Los comandos para administrar la aplicación son los siguientes:
+
+- test: lanza los tests de la aplicación haciendo una llamada a phpunit. Compureba previamente que todas las dependencias están instaladas.
+- start: arranca el servicio en un contenedor docker. Para gestionar esta aplicación se hace uso del gestor de procesos [phppm](https://github.com/php-pm/php-pm). Como dice en su repositorio este "process manager" mejora hasta x15 el desempeño de la aplicación principalmente mejorando el arranque o "bootstrap" que requiere php (cargando/parseando ficheros, declarando símbolos). Phppm lanza varias instancias de la aplicación y las mantiene en memoria para realizar rápidas respuestas cuando se reciben las solicitudes.
+- start-dev: inicia la aplicación en modo "desarrollo" que permite realizar cambios en caliente en el código y que el servidor los detecte y se reinicie automaticamente.
+- stop: Para el servidor y elimina el contenedor.

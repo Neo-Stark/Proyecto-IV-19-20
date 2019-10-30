@@ -1,8 +1,8 @@
 # PrintCloud
 
 [![Build Status](https://travis-ci.com/Neo-Stark/Proyecto-IV-19-20.svg?branch=master)](https://travis-ci.com/Neo-Stark/Proyecto-IV-19-20)
-
 [![CircleCI](https://circleci.com/gh/Neo-Stark/Proyecto-IV-19-20.svg?style=svg)](https://circleci.com/gh/Neo-Stark/Proyecto-IV-19-20)
+[![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
 
 ## Overview
 
@@ -23,14 +23,25 @@ $ composer install
 
 ## Tests
 ```bash
-$ vendor/bin/phpunit
+$ composer test
 ```
 *En la raíz del proyecto
 
+## Iniciar servicio
+```bash
+$ composer start&
+```
+>Requiere tener instalado [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+
 ## Documentación adicional
 
+***Actualizado hito 3*** 
+- [Documentación rutas](docs/rutas.md)
 - Configuración herramientas [construcción y CI](docs/CI-herramientas.md)
+***
 - [Tecnologías usadas](docs/Tecnologías.md)
 - [Mas información](docs/MasInformacion.md)
+
+buildtool: composer.json
 
 > Proyecto para la asignatura Infraestructura Virtual. Curso 2019-20.
