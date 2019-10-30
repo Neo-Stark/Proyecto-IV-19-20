@@ -7,6 +7,7 @@ class TestRouting extends TestCase {
         $response = $this->call('POST','/createPdf', ['nombre' => 'PrintCloud', 'datos' => ['nombre'=>'fran', 'universidad'=>'ugr']]);
         $this->assertEquals(200, $response->status());
         $this->assertEquals(true, json_decode($response->content())->created);
+        $this->assertIsInt(json_decode($response->content())->id);
     }
 
     public function testDescargarPdf(){
@@ -26,6 +27,7 @@ class TestRouting extends TestCase {
         $this->assertEquals(
             $this->app->version(), $this->response->getContent()
         );
+        $this->assertEquals(200, $this->response->status());
     }
 
 }
