@@ -35,7 +35,7 @@ $ composer start&
 
 ## Documentación adicional
 
-***Actualizado hito 3*** 
+***Actualizado*** 
 - [Documentación rutas](docs/rutas.md)
 - Configuración herramientas [construcción y CI](docs/CI-herramientas.md)
 ***
