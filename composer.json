@@ -45,8 +45,12 @@
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
-        "test": "vendor/bin/phpunit",
+        "test": [
+            "@composer install",
+            "vendor/bin/phpunit"
+        ],
         "start": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/",
+        "start-dev": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/ --debug=1 --app-env=dev",
         "stop": [
             "docker stop phppm",
             "docker rm phppm"
