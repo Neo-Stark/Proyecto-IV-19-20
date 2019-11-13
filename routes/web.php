@@ -11,13 +11,17 @@
 |
 */
 
-$router->get('/', function () use ($router) {
+$router->get('/version', function () use ($router) {
     return $router->app->version();
 });
-$router->get('/status', function () {
+$router->get('/', function () {
     return response()->json(['status' => 'OK']);
 
 });
 // $router->get('/pdf/{id}', 'ControllerPdf@ver');
 $router->get('/getPdf/{id}', 'ControllerPdf@descargar');
+$router->get('/documentos', function () {
+    return response()->json(['1' => 'documento.pdf', '2' => 'prueba.pdf', '3' => 'lista.pdf']);
+});
+
 $router->post('/createPdf', 'ControllerPdf@createPdf');
