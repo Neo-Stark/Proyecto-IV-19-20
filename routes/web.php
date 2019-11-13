@@ -15,7 +15,8 @@ $router->get('/version', function () use ($router) {
     return $router->app->version();
 });
 $router->get('/', function () {
-    return response()->json(['status' => 'OK']);
+    return response()->json(['status' => 'OK', 
+    'ejemplo'=>['ruta'=>'/documentos','valor'=>['1' => 'documento.pdf', '2' => 'prueba.pdf', '3' => 'lista.pdf']]]);
 
 });
 // $router->get('/pdf/{id}', 'ControllerPdf@ver');
