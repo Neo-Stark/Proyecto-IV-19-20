@@ -41,7 +41,7 @@ class ControllerPdf extends BaseController
         $this->pdf->setPdfName("prueba.pdf");
         $this->pdf->generarHtml();
         $this->pdf->generar();
-        // $this->pdf->descargar();
+        return $this->pdf->descargar();
     }
 
     public function createPdf(Request $request){

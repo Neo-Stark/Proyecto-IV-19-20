@@ -2,6 +2,7 @@
 
 namespace App;
 use Dompdf\Dompdf;
+use Illuminate\Http\Response;
 
 class PrintCloud{
 
@@ -29,12 +30,13 @@ class PrintCloud{
         
     }
     
-    public function descargar(){
-        if ($this->pdfName != ""){
-            $this->dompdf->stream($this->pdfName);     
-        }
-        else
-            return 'No existe el pdf';
+    public function descargar($filename = "documento.pdf"){
+        $output = $this->dompdf->output();
+        return new Response($output, 200, array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' =>  'attachment; filename="'.$filename.'"',
+                'Content-Length' => strlen($output),
+            ));
     }
     
     public function ver(){
