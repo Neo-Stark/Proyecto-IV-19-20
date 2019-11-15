@@ -19,7 +19,7 @@ az appservice plan create --name IV --resource-group IV --sku B1 --is-linux
 
 ## Creación de una aplicación web
 
-Este es el paso más importante donde creamos efectivamente la aplicación web. Aquí indicamos a que grupo y plan va a pertenecer nuestra aplicación (las que hemos creado anteriormente) y le damos un nombre a la aplicación (debe ser único). Por último, establecemos el tiempo de ejecución en _PHP|7.2_, esto es muy **importante** ya que gracias a esto le estamos diciendo que nuestra aplicación es PHP y en el momento de subir nuestro código azure desplegará automaticamente los mecanismos que tiene implementado por defecto para la misma. Así que si encuentra un fichero _composer.json_ en la raíz del proyecto ejecutará automaticamente `composer install` para instalar todas las dependencias necesarias de nuestra aplicación.
+Este es el paso más importante donde creamos efectivamente la aplicación web. Aquí indicamos a que grupo y plan va a pertenecer nuestra aplicación (las que hemos creado anteriormente) y le damos un nombre a la aplicación (debe ser único). Por último, establecemos el tiempo de ejecución en _PHP\|7.2_, esto es muy **importante** ya que gracias a esto le estamos diciendo que nuestra aplicación es PHP y en el momento de subir nuestro código azure desplegará automaticamente los mecanismos que tiene implementado por defecto para la misma. Así que si encuentra un fichero _composer.json_ en la raíz del proyecto ejecutará automaticamente `composer install` para instalar todas las dependencias necesarias de nuestra aplicación.
 
 ```bash
 az webapp create --resource-group IV --plan IV --name PrintCloud --runtime "PHP|7.2"
@@ -57,7 +57,9 @@ Esta aplicación, al utilizar el framework laravel, tiene el punto de entrada en
 > Nota: el servidor web sobre el que corre la aplicación es Apache
 
 Fichero .htaccess :
-```<IfModule mod_rewrite.c>
+
+```
+<IfModule mod_rewrite.c>
     RewriteEngine on
 
     RewriteRule ^.*$ /public/$1 [NC,L,QSA]
