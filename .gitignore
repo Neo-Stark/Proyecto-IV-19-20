@@ -29,3 +29,6 @@ Homestead.json
 Homestead.yaml
 .env
 .phpunit.result.cache
+
+# archivos propios
+docker-compose.yml

@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.com/Neo-Stark/Proyecto-IV-19-20.svg?branch=master)](https://travis-ci.com/Neo-Stark/Proyecto-IV-19-20)
 [![CircleCI](https://circleci.com/gh/Neo-Stark/Proyecto-IV-19-20.svg?style=svg)](https://circleci.com/gh/Neo-Stark/Proyecto-IV-19-20)
 [![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
+[![StyleCI](https://github.styleci.io/repos/208740465/shield?branch=master)](https://github.styleci.io/repos/208740465)
+
+***despliegue***: http://printcloud.azurewebsites.net
 
 ## Overview
 
@@ -35,10 +38,8 @@ $ composer start&
 
 ## Documentación adicional
 
-***Actualizado*** 
 - [Documentación rutas](docs/rutas.md)
 - Configuración herramientas [construcción y CI](docs/CI-herramientas.md)
-***
 - [Tecnologías usadas](docs/Tecnologías.md)
 - [Mas información](docs/MasInformacion.md)
 
