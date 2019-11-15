@@ -11,7 +11,10 @@ En cuanto a la herramienta de integración continua se ha utilizado *Travis CI* 
 Una vez integrado nuestro repositorio con travis-ci.com se ha configurado el fichero .travis.yml siguiente:
 ```yml
 language: php
-before_script: composer install
+php:
+  - '7.2'
+
+install: composer install
 ```
 Como vemos es un fichero de configuración bastante simple, lo primero que hacemos es indicar a travis que el lenguaje que vamos a usar es php. Hay que añadir que solo se testea en la última versión porque nuestra aplicación solo es compatible con versiones posteriores a la 7.2. Posteriormente se le indica que antes de ejecutar ningún script instale las dependecias de nuestro proyecto con `composer install`. Por último quedaría decir a travis que ejecute nuestros tests, pero como usamos *phpunit* no es necesario porque es el script que travis usa por defecto.
 
