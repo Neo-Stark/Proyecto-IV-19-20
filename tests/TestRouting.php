@@ -18,7 +18,7 @@ class TestRouting extends TestCase
 
     public function testStatus()
     {
-        $response = $this->call('GET', '/');
+        $response = $this->call('GET', '/status');
         $this->assertEquals(200, $response->status());
         $this->assertEquals('OK', json_decode($response->content())->status);
         echo json_encode(['ruta'=>'/documentos', 'valor'=>['1' => 'documento.pdf', '2' => 'prueba.pdf', '3' => 'lista.pdf']]);
