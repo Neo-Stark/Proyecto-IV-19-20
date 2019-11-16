@@ -15,7 +15,7 @@ $router->get('/version', function () use ($router) {
     return $router->app->version();
 });
 $router->get('/', function () {
-    return "PrintCloud API";
+    return 'PrintCloud API';
 });
 $router->get('/status', function () {
     return response()->json(['status' => 'OK',
