@@ -5,7 +5,7 @@
 [![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
 [![StyleCI](https://github.styleci.io/repos/208740465/shield?branch=master)](https://github.styleci.io/repos/208740465)
 
-***despliegue***: http://printcloud.azurewebsites.net
+despliegue: http://printcloud.azurewebsites.net
 
 ## Overview
 
