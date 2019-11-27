@@ -16,13 +16,23 @@ class ControllerPdf extends BaseController
         $this->pdf = new PrintCloud();
     }
 
-    public function ver($id)
+    private function generar($id)
     {
         $model = Pdf::find($id);
         $this->pdf->setDatos($model->datos);
         $this->pdf->setPdfName($model->name.'.pdf');
         $this->pdf->generarHtml();
         $this->pdf->generar();
+    }
+
+    public function ver()
+    {
+        // generar($id);
+        $vista = view('pdfView', ['name' => 'Juan']);
+        // return $vista;
+        $this->pdf->setPdfName('prueba.pdf');
+        $this->pdf->generarHtml($vista);
+        $this->pdf->generar(); 
         $this->pdf->ver();
     }
 
@@ -30,19 +40,20 @@ class ControllerPdf extends BaseController
     {
         // $model = Pdf::find($id);
         // $this->pdf->setDatos($model->datos);
-        $this->pdf->setDatos('[
-            {
-                "nombre": "fran",
-                "universidad": "UGR"
-            },
-            {
-                "nombre": "ivan",
-                "universidad": "UCA"
-            }
-        ]');
+        // $this->pdf->setDatos('[
+        //     {
+        //         "nombre": "fran",
+        //         "universidad": "UGR"
+        //     },
+        //     {
+        //         "nombre": "ivan",
+        //         "universidad": "UCA"
+        //     }
+        // ]');
         // $this->pdf->setPdfName($model->name.".pdf");
         $this->pdf->setPdfName('prueba.pdf');
-        $this->pdf->generarHtml();
+        $vista = view('pdfView', ['name' => 'Fran']);
+        $this->pdf->generarHtml($vista);
         $this->pdf->generar();
 
         return $this->pdf->descargar();

@@ -56,12 +56,33 @@ class PrintCloud
             <!DOCTYPE html>
             <html>
             <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
           <meta charset="UTF-8">
           <title>'.$this->pdfName.'</title>
           </head>
           <body>
+          <nav class="navbar navbar-expand navbar-dark bg-dark" style="background-color: red;" >
+            <span class="navbar-brand"><img src="/img/logo-ugr.png" alt="logo ugr"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample02">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                </ul>
+                <form class="form-inline my-2 my-md-0">
+                <input class="form-control" type="text" placeholder="Search">
+                </form>
+            </div>
+            </nav>
           <table>
-          <tr>
+          <tr style="background-color: red;" >
           ';
             if (! is_null($this->datos)) {
                 $array = json_decode($this->datos, true);
