@@ -51,6 +51,7 @@
         ],
         "start": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/",
         "start-dev": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/ --debug=1 --app-env=dev",
+        "start-docker": "php -S 0.0.0.0:$PORT -t public",
         "stop": [
             "docker stop phppm",
             "docker rm phppm"
