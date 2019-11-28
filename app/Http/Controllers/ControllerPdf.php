@@ -32,7 +32,7 @@ class ControllerPdf extends BaseController
         // return $vista;
         $this->pdf->setPdfName('prueba.pdf');
         $this->pdf->generarHtml($vista);
-        $this->pdf->generar(); 
+        $this->pdf->generar();
         $this->pdf->ver();
     }
 
