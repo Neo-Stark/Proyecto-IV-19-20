@@ -1,5 +1,6 @@
 # Documentación PrintCloud
 
+- [VM y provisionamiento](VM-provisionamiento)
 - [Dockerfile](docker.md)
 - [Docker Hub y GitHub](dockerhub-github.md)
 - [Despliegue contenedor azure](despliegue-azure.md)

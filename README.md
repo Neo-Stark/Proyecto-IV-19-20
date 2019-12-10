@@ -15,11 +15,13 @@ DockerHub: https://hub.docker.com/r/neostark/printcloud
 
 - Comando Docker pull: docker pull neostark/printcloud
 
+Vagrant Cloud: https://app.vagrantup.com/NeoStark/boxes/PrintCloud
+
 ## Overview
 
 PrintCloud es una simple API que genera un pdf a partir del conjunto de datos que quieras enviarle.
 
-Te permite enviar la información en un formato JSON que *PrintCloud* decodificará y creará un documento HTML a partir de ellos para, posteriormente, generar un pdf a partir de ese HTML aplicandole una hoja de estilos CSS.
+Te permite enviar la información en un formato JSON que _PrintCloud_ decodificará y creará un documento HTML a partir de ellos para, posteriormente, generar un pdf a partir de ese HTML aplicandole una hoja de estilos CSS.
 
 Además, te permite elegir entre diferentes formatos y diseños para generar el pdf, que puedes declarar como un parámetro más en llamada. Puedes consultar todos los diseños [aquí](docs/styles).
 
@@ -30,21 +32,37 @@ $ git clone https://github.com/Neo-Stark/Proyecto-IV-19-20.git
 $ cd Proyecto-IV-19-20
 $ composer install
 ```
->Requiere tener instalado [Composer](https://getcomposer.org)
+
+> Requiere tener instalado [Composer](https://getcomposer.org)
 
 ## Tests
+
 ```bash
 $ composer test
 ```
-*En la raíz del proyecto
+
+\*En la raíz del proyecto
 
 ## Iniciar servicio
+
 ```bash
 $ composer start&
 ```
->Requiere tener instalado [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+
+> Requiere tener instalado [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 ## [Documentación adicional](https://neo-stark.github.io/Proyecto-IV-19-20/)
+
+- [VM y provisionamiento](https://neo-stark.github.io/Proyecto-IV-19-20/VM-provisionamiento)
+- [Dockerfile](https://neo-stark.github.io/Proyecto-IV-19-20/docker)
+- [Docker Hub y GitHub](https://neo-stark.github.io/Proyecto-IV-19-20/dockerhub-github)
+- [Despliegue contenedor azure](https://neo-stark.github.io/Proyecto-IV-19-20/despliegue-azure)
+- [Despliegue contenedor heroku](https://neo-stark.github.io/Proyecto-IV-19-20/despliegue-heroku)
+- [Despliegue](https://neo-stark.github.io/Proyecto-IV-19-20/despliegue)
+- [Documentación rutas](https://neo-stark.github.io/Proyecto-IV-19-20/rutas)
+- [Configuración herramientas construcción y CI](https://neo-stark.github.io/Proyecto-IV-19-20/CI-herramientas)
+- [Tecnologías usadas](https://neo-stark.github.io/Proyecto-IV-19-20/Tecnologías)
+- [Mas información](https://neo-stark.github.io/Proyecto-IV-19-20/MasInformacion)
 
 buildtool: composer.json
 
