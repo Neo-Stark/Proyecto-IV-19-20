@@ -53,7 +53,7 @@ $ composer start&
 
 ## [Documentación adicional](https://neo-stark.github.io/Proyecto-IV-19-20/)
 
-- [VM y provisionamiento](https://neo-stark.github.io/Proyecto-IV-19-20/VM-provisionamiento)
+- [VM y provisionamiento](docs/VM-provisionamiento.md)
 - [Dockerfile](https://neo-stark.github.io/Proyecto-IV-19-20/docker)
 - [Docker Hub y GitHub](https://neo-stark.github.io/Proyecto-IV-19-20/dockerhub-github)
 - [Despliegue contenedor azure](https://neo-stark.github.io/Proyecto-IV-19-20/despliegue-azure)
