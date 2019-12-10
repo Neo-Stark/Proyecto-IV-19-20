@@ -11,7 +11,7 @@ Contenedor: https://printcloud-docker.azurewebsites.net
 
 Contenedor 2: https://printcloud-docker.herokuapp.com
 
-DockerHub: https://hub.docker.com/repository/docker/neostark/printcloud
+DockerHub: https://hub.docker.com/r/neostark/printcloud
 
 - Comando Docker pull: docker pull neostark/printcloud
 
