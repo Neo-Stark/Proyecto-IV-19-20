@@ -55,6 +55,8 @@
         "stop": [
             "docker stop phppm",
             "docker rm phppm"
-        ]
+        ],
+        "provision": "vagrant provision",
+        "vm-up": "vagrant up"
     }
 }
