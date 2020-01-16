@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Query\Expression;
 
 class CreatePdfTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreatePdfTable extends Migration
         Schema::create('pdf', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->json('datos');
+            $table->json('datos')->default(new Expression('(JSON_ARRAY())'));
             $table->timestamps();
         });
     }

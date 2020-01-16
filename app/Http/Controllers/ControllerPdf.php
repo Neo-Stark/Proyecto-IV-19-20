@@ -6,6 +6,7 @@ use App\Pdf;
 use App\PrintCloud;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
 
 class ControllerPdf extends BaseController
 {
@@ -20,59 +21,38 @@ class ControllerPdf extends BaseController
     {
         $model = Pdf::find($id);
         $this->pdf->setDatos($model->datos);
-        $this->pdf->setPdfName($model->name.'.pdf');
+        $this->pdf->setPdfName($model->nombre . '.pdf');
         $this->pdf->generarHtml();
         $this->pdf->generar();
     }
 
-    public function ver()
+    public function ver($id)
     {
-        // generar($id);
-        $vista = view('pdfView', ['name' => 'Juan']);
-        // return $vista;
-        $this->pdf->setPdfName('prueba.pdf');
-        $this->pdf->generarHtml($vista);
-        $this->pdf->generar();
+        $this->generar($id);
         $this->pdf->ver();
     }
 
     public function descargar($id)
     {
-        // $model = Pdf::find($id);
-        // $this->pdf->setDatos($model->datos);
-        // $this->pdf->setDatos('[
-        //     {
-        //         "nombre": "fran",
-        //         "universidad": "UGR"
-        //     },
-        //     {
-        //         "nombre": "ivan",
-        //         "universidad": "UCA"
-        //     }
-        // ]');
-        // $this->pdf->setPdfName($model->name.".pdf");
-        $this->pdf->setPdfName('prueba.pdf');
-        $vista = view('pdfView', ['name' => 'Fran']);
-        $this->pdf->generarHtml($vista);
-        $this->pdf->generar();
-
+        $this->generar($id);
         return $this->pdf->descargar();
     }
 
     public function createPdf(Request $request)
     {
-        // $pdf = new Pdf();
-        // $pdf->nombre = $request->input('nombre');
-        // if (is_array($request->input('datos'))):
-        // $pdf->datos = json_encode($request->input('datos'));
-        // else:
-        //     $pdf->datos = json_encode(Array($request->input('datos')));
-        // endif;
-        // $pdf->save();
-        // $id = DB::table('pdf')->latest()->first();
-        $this->pdf->setDatos(json_encode($request->input('datos')));
-        $this->pdf->setPdfName($request->input('nombre'));
+        $pdf = new Pdf();
+        $pdf->nombre = $request->input('nombre');
+        if (is_array($request->input('datos'))) :
+            $pdf->datos = json_encode($request->input('datos'));
+        else :
+            $pdf->datos = json_encode(array($request->input('datos')));
+        endif;
+        if ($pdf->save()):
+            $id = DB::table('pdf')->latest()->first(['id']);
+            return response()->json(['created' => true, 'id' => $id->id]);
+        else:
+            return response()->json(['created' => false]);
+        endif;
 
-        return response()->json(['created'=>true, 'id'=> 1]);
     }
 }

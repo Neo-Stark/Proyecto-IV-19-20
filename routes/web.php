@@ -18,10 +18,12 @@ $router->get('/', function () {
     return 'PrintCloud API';
 });
 $router->get('/status', function () {
-    return response()->json(['status' => 'OK',
-    'ejemplo'=>['ruta'=>'/documentos', 'valor'=>['1' => 'documento.pdf', '2' => 'prueba.pdf', '3' => 'lista.pdf']], ]);
+    return response()->json([
+        'status' => 'OK',
+        'ejemplo' => ['ruta' => '/documentos', 'valor' => ['1' => 'documento.pdf', '2' => 'prueba.pdf', '3' => 'lista.pdf']],
+    ]);
 });
-$router->get('/pdf', 'ControllerPdf@ver');
+$router->get('/pdf/{id}', 'ControllerPdf@ver');
 $router->get('/getPdf/{id}', 'ControllerPdf@descargar');
 $router->get('/documentos', function () {
     return response()->json(['1' => 'documento.pdf', '2' => 'prueba.pdf', '3' => 'lista.pdf']);
