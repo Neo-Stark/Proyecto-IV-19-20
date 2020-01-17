@@ -1,0 +1,3 @@
+---
+# declaramos la variable installer por comodidad para usarla en las tareas siguientes
+installer: /tmp/installer.php

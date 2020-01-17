@@ -5,6 +5,9 @@
 [![PPM Compatible](https://raw.githubusercontent.com/php-pm/ppm-badge/master/ppm-badge.png)](https://github.com/php-pm/php-pm)
 [![StyleCI](https://github.styleci.io/repos/208740465/shield?branch=master)](https://github.styleci.io/repos/208740465)
 
+Despliegue final: 13.94.246.88
+> Nota: desplegado en el puerto 8080
+
 Despliegue: https://printcloud.azurewebsites.net
 
 Contenedor: https://printcloud-docker.azurewebsites.net
@@ -53,7 +56,7 @@ $ composer start&
 
 ## [Documentación adicional](https://neo-stark.github.io/Proyecto-IV-19-20/)
 
-- [VM y provisionamiento](docs/VM-provisionamiento.md)
+- [Despliegue final](docs/despliegue-final.md)
 - [Dockerfile](https://neo-stark.github.io/Proyecto-IV-19-20/docker)
 - [Docker Hub y GitHub](https://neo-stark.github.io/Proyecto-IV-19-20/dockerhub-github)
 - [Despliegue contenedor azure](https://neo-stark.github.io/Proyecto-IV-19-20/despliegue-azure)

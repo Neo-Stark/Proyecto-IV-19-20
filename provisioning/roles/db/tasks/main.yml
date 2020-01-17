@@ -1,0 +1,8 @@
+---
+  # vamos a instalar las herramientas que necesitamos en nuestra máquina y que podemos obtener
+  # via apt install. En nuestro caso git y php.
+  - name: Instalar mysql server
+    apt:
+      name:
+        - mysql-server
+      state: present

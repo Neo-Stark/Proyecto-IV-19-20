@@ -1,0 +1,35 @@
+---
+# vamos a instalar las herramientas que necesitamos en nuestra máquina y que podemos obtener
+# via apt install. En nuestro caso git y php.
+- name: Instalar php y extensiones
+  apt:
+    name:
+      - php7.2-cli
+      - php7.2-xml
+      - php-mbstring
+    state: present
+
+# Descargamos el instalador de composer como lo haríamos si lo estuvieramos haciendo a mano:
+# curl -sSk https://getcomposer.org/installer -o /tmp/composer-installer.php
+- name: Descargar composer
+  get_url:
+    url: https://getcomposer.org/installer
+    dest: "{{ installer }}"
+
+# instalamos composer con la herramienta de línea de órdenes de php que hemos instalado anteriormente.
+# Posteriormente movemos el ejecutable generado a una ruta accesible desde el PATH.
+# php /tmp/composer-installer.php
+# sudo mv composer.phar /usr/local/bin/composer
+- name: Instalar composer
+  # Para ejecutar varias órdenes en un mismo 'task' se procede creando este "bucle" donde en la
+  # lista with_items se declaran las ordenes que la variable {{item}} irá tomando secuencialmente.
+  command: "{{ item }}"
+  with_items:
+    - "php {{ installer }}"
+    - mv composer.phar /usr/local/bin/composer
+# Borramos el instalador de composer pues ya no es necesario
+# sudo rm /tmp/composer-installer.php
+- name: Borrar instalador composer
+  file:
+    path: "{{ installer }}"
+    state: absent

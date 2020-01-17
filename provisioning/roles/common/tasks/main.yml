@@ -1,0 +1,10 @@
+---
+# vamos a instalar las herramientas comunes
+- name: Instalar herramientas
+  apt:
+    # Necesario actualizar la cache porque no encontraba uno de los paquetes solicitados.
+    update_cache: true
+    name:
+      - git
+      - zip
+    state: present
