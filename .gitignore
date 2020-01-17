@@ -32,3 +32,5 @@ Homestead.yaml
 
 # archivos propios
 docker-compose.yml
+/.vagrant
+/tests/TestRouting.php

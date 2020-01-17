@@ -1,0 +1,18 @@
+---
+- hosts: web
+  become: yes
+  tasks:
+    # Con el módulo de git descargamos los fuentes que tenemos alojados en github al directorio
+    # /web de la máquina virtual
+    - name: descargar fuentes
+      git:
+        repo: https://github.com/Neo-Stark/Proyecto-IV-19-20.git
+        dest: /web
+    # Instalamos los paquetes y dependencias con composer que lo instalamos en el paso de
+    # provisionamiento
+    - name: instalar dependencias
+      composer:
+        command: install
+        working_dir: /web
+    
+      

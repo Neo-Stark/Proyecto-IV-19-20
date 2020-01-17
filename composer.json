@@ -1,62 +1,70 @@
 {
-    "name": "laravel/lumen",
-    "description": "The Laravel Lumen Framework.",
-    "keywords": [
-        "framework",
-        "laravel",
-        "lumen"
+  "name": "laravel/lumen",
+  "description": "The Laravel Lumen Framework.",
+  "keywords": [
+    "framework",
+    "laravel",
+    "lumen"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": "^7.2",
+    "dompdf/dompdf": "^0.8.3",
+    "laravel/lumen-framework": "^6.0"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "^1.4",
+    "phpunit/phpunit": "^8.0",
+    "mockery/mockery": "^1.0",
+    "phing/phing": "^3.0"
+  },
+  "autoload": {
+    "classmap": [
+      "database/seeds",
+      "database/factories"
     ],
-    "license": "MIT",
-    "type": "project",
-    "require": {
-        "php": "^7.2",
-        "dompdf/dompdf": "^0.8.3",
-        "laravel/lumen-framework": "^6.0"
-    },
-    "require-dev": {
-        "fzaninotto/faker": "^1.4",
-        "phpunit/phpunit": "^8.0",
-        "mockery/mockery": "^1.0",
-        "phing/phing": "^3.0"
-    },
-    "autoload": {
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ],
-        "psr-4": {
-            "App\\": "app/"
-        }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/"
-        ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true,
-        "process-timeout": 0
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "test": [
-            "@composer install",
-            "vendor/bin/phpunit"
-        ],
-        "start": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/",
-        "start-dev": "docker run --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/ --debug=1 --app-env=dev",
-        "start-docker": "php -S 0.0.0.0:$PORT -t public",
-        "stop": [
-            "docker stop phppm",
-            "docker rm phppm"
-        ],
-        "provision": "vagrant provision",
-        "vm-up": "vagrant up"
+    "psr-4": {
+      "App\\": "app/"
     }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "process-timeout": 0
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "test": [
+      "@composer install",
+      "vendor/bin/phpunit"
+    ],
+    "start": "php -S 0.0.0.0:$PORT -t public",
+    "start-phppm": "docker run --rm --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/",
+    "start-dev": "docker run --rm --name phppm -v `pwd`:/var/www -p 8080:80 phppm/nginx --bootstrap=laravel --static-directory=public/ --debug=1 --app-env=dev",
+    "start-service": "vagrant ssh -c 'php -S 0.0.0.0:8080 -t /web/public' web",
+    "stop": [
+      "docker stop phppm",
+      "docker rm phppm"
+    ],
+    "provision": "vagrant provision",
+    "vm-up": "vagrant up",
+    "deploy": "ansible-playbook ./despliegue/despliegue.yml -i ./.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory",
+    "despliegue-final": [
+      "@composer vm-up",
+      "@composer provision",
+      "@composer deploy",
+      "@composer start-service"
+    ]
+  }
 }
