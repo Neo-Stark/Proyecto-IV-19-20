@@ -36,10 +36,10 @@ class PrintCloud
         $output = $this->dompdf->output();
 
         return new Response($output, 200, [
-                'Content-Type' => 'application/pdf',
-                'Content-Disposition' =>  'attachment; filename="'.$this->pdfName.'"',
-                'Content-Length' => strlen($output),
-            ]);
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' =>  'attachment; filename="'.$this->pdfName.'"',
+            'Content-Length' => strlen($output),
+        ]);
     }
 
     public function ver()

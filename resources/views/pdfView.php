@@ -6,23 +6,23 @@
 
 <body>
   <?php
-  if (!is_null($datos)) {
-    $array = json_decode($datos);
-    echo '<table class="table table-dark table-striped table-borderless">';
-    echo '<thead class="thead-light"> <tr>';
-    foreach ($array[0] as $cabecera => $valor) {
-      echo '<th>' . $cabecera . '</th>';
-    }
-    echo '</tr> </thead>';
-    echo  '<tbody>';
-    foreach ($array as $tupla) {
-      echo '<tr>';
-      foreach ($tupla as $valor) {
-        echo '<td>' . $valor . '</td>';
+  if (! is_null($datos)) {
+      $array = json_decode($datos);
+      echo '<table class="table table-dark table-striped table-borderless">';
+      echo '<thead class="thead-light"> <tr>';
+      foreach ($array[0] as $cabecera => $valor) {
+          echo '<th>'.$cabecera.'</th>';
       }
-      echo '</tr>';
-    }
-    echo '</tbody> </table>';
+      echo '</tr> </thead>';
+      echo  '<tbody>';
+      foreach ($array as $tupla) {
+          echo '<tr>';
+          foreach ($tupla as $valor) {
+              echo '<td>'.$valor.'</td>';
+          }
+          echo '</tr>';
+      }
+      echo '</tbody> </table>';
   }
   ?>
 </body>
